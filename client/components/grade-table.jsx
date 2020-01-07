@@ -4,7 +4,13 @@ import Grade from './grade';
 class GradeTable extends React.Component {
 
   displayStudent() {
-    if (this.props.grades.length > 0) {
+    if (this.props.grades.length === 0) {
+      return (
+        <tr>
+          <th scope="row">No Grades Recorded</th>
+        </tr>
+      );
+    } else if (this.props.grades.length > 0) {
       return this.props.grades.map(sgt => {
         return (
           <Grade key={sgt.id} name={sgt.name} course={sgt.course}

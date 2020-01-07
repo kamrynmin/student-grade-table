@@ -22,10 +22,19 @@ class App extends React.Component {
       });
   }
 
+  getAverageGrade() {
+    let sum = 0;
+    this.state.grades.map(user => {
+      sum += user.grade;
+    });
+    return Math.round(sum / this.state.grades.length);
+  }
+
   render() {
+    const average = this.getAverageGrade();
     return (
       <div className="col pt-5">
-        <PageTitle text = "React SGT" />
+        <PageTitle average = {average} text = "React SGT" />
         <GradeTable grades = {this.state.grades}/>
       </div>
     );
