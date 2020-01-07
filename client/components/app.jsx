@@ -8,7 +8,6 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
-
   }
 
   componentDidMount() {
@@ -27,7 +26,7 @@ class App extends React.Component {
     return (
       <div className="col pt-5">
         <PageTitle text = "React SGT" />
-        <GradeTable />
+        <GradeTable grades = {this.state.grades}/>
       </div>
     );
   }
