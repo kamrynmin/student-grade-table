@@ -14,7 +14,7 @@ class GradeTable extends React.Component {
       return this.props.grades.map(sgt => {
         return (
           <Grade key={sgt.id} name={sgt.name} course={sgt.course}
-            grade={sgt.grade} />
+            grade={sgt.grade} deleteStudent={this.props.deleteStudent} id={sgt.id}/>
         );
       });
     }
