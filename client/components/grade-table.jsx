@@ -25,14 +25,15 @@ class GradeTable extends React.Component {
       <table className="table table-bordered">
         <thead className="thead-dark">
           <tr>
-            <th>Student Name</th>
-            <th>Course</th>
-            <th>Grade</th>
+            <th scope="col-">Student Name</th>
+            <th scope="col-">Course</th>
+            <th scope="col-">Grade</th>
           </tr>
         </thead>
         <tbody>
           {this.displayStudent()}
         </tbody>
+
       </table>
 
     );
