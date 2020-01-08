@@ -71,6 +71,10 @@ class App extends React.Component {
     return beforePercentage.toFixed(2) + '%';
   }
 
+  deleteStudent() {
+
+  }
+
   render() {
     const average = this.getAverageGrade();
     return (
