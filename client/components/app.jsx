@@ -24,21 +24,6 @@ class App extends React.Component {
       });
   }
 
-  handleAdd(newStudent) {
-    const init = {
-      method: 'POST',
-      body: JSON.stringify(newStudent),
-      headers: { 'Content-type': 'application/json' }
-    };
-    fetch('api/grades', init)
-      .then(response => response.json())
-      .then(data => {
-        const dataCopy = [...this.state.studentData];
-        dataCopy.push(data);
-        this.setState(state => ({ studentData: dataCopy }));
-      });
-  }
-
   addStudent(newStudent) {
     fetch('/api/grades', {
       method: 'POST',
@@ -70,6 +55,10 @@ class App extends React.Component {
     });
     const beforePercentage = sum / this.state.grades.length;
     return beforePercentage.toFixed(2) + '%';
+  }
+
+  deleteStudent() {
+
   }
 
   render() {
