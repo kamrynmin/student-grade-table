@@ -17,6 +17,18 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 100
+    },
+    {
+      "name": "Hana Min",
+      "course": "Eating",
+      "grade": "95",
+      "id": 4
+    },
+    {
+      "name": "Kamryn Min",
+      "course": "Sleeping",
+      "grade": "100",
+      "id": 5
     }
   ]
 }
