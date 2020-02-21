@@ -49,38 +49,38 @@ class GradeForm extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <h6 className="container col-4 text-center"> Add Grade
         <div className="row">
-          <div className="col">
+          <div className="col-12-auto">
             <form onSubmit={this.handleSubmit}>
               <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Name</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
                   <div className="input-group-text fas fa-user"></div>
                 </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Name" value= {this.state.name} onChange={this.handleNameChange}></input>
+                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Name" value= {this.state.name} onChange={this.handleNameChange}></input>
               </div>
               <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Course</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
                   <div className="input-group-text far fa-list-alt"></div>
                 </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Course" value= {this.state.course} onChange={this.handleCourseChange}></input>
+                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Course" value= {this.state.course} onChange={this.handleCourseChange}></input>
               </div>
               <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Grade</label>
               <div className="input-group mb-2 mr-sm-2">
                 <div className="input-group-prepend">
                   <div className="input-group-text fas fa-user-graduate"></div>
                 </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Grade" value= {this.state.grade} onChange={this.handleGradeChange}></input>
+                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Grade" value= {this.state.grade} onChange={this.handleGradeChange}></input>
               </div>
-              <button onClick={this.handleSubmit} type="button" className="btn btn-success">Add</button>
+              <button onSubmit={this.handleSubmit} type="submit" className="btn btn-success">Add</button>
               <button onClick={this.clearForm} type="button" className="btn btn-secondary">Cancel</button>
 
             </form>
           </div>
         </div>
-      </div>
+      </h6>
 
     );
   }
