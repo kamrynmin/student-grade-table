@@ -10,6 +10,10 @@ class Grade extends React.Component {
     this.props.deleteStudent(this.props.id);
   }
 
+  handleUpdate() {
+
+  }
+
   render() {
     return (
       <tr scope="row">
