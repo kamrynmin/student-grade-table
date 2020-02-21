@@ -1,22 +1,10 @@
 {
   "grades": [
     {
-      "id": 2,
-      "name": "Brendan Eich",
-      "course": "JavaScript",
-      "grade": 100
-    },
-    {
-      "name": "Hana Min",
-      "course": "Eating",
-      "grade": "95",
-      "id": 4
-    },
-    {
-      "name": "Kamryn Min",
-      "course": "Sleeping",
+      "name": "John Park",
+      "course": "Coding",
       "grade": "99",
-      "id": 5
+      "id": 2
     }
   ]
 }

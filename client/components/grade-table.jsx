@@ -7,7 +7,7 @@ class GradeTable extends React.Component {
     if (this.props.grades.length === 0) {
       return (
         <tr>
-          <th scope="row">No Grades Recorded</th>
+          <td colSpan="4" className="text-center">No Grades Recorded</td>
         </tr>
       );
     } else if (this.props.grades.length > 0) {
@@ -22,10 +22,11 @@ class GradeTable extends React.Component {
 
   render() {
     return (
-      <table className="table table-bordered">
-        <thead className="thead-dark">
+
+      <table className="table table-striped col">
+        <thead>
           <tr>
-            <th scope="col-">Student Name</th>
+            <th scope="col-">Name</th>
             <th scope="col-">Course</th>
             <th scope="col-">Grade</th>
             <th scope="col-">Operations</th>
@@ -34,7 +35,6 @@ class GradeTable extends React.Component {
         <tbody>
           {this.displayStudent()}
         </tbody>
-
       </table>
 
     );

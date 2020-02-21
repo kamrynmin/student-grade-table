@@ -64,11 +64,15 @@ class App extends React.Component {
 
   getAverageGrade() {
     let sum = 0;
-    this.state.grades.map(user => {
-      sum += parseInt(user.grade);
-    });
-    const beforePercentage = sum / this.state.grades.length;
-    return beforePercentage.toFixed(2) + '%';
+    if (this.state.grades.length > 0) {
+      this.state.grades.map(user => {
+        sum += parseInt(user.grade);
+      });
+      const beforePercentage = sum / this.state.grades.length;
+      return beforePercentage.toFixed(2) + '%';
+    } else {
+      return 'N/A';
+    }
   }
 
   deleteStudent() {
@@ -79,9 +83,11 @@ class App extends React.Component {
     const average = this.getAverageGrade();
     return (
       <React.Fragment>
-        <div className="col pt-5">
-          <PageTitle average = {average} text = "Student Grade Table" />
-          <div className="main-container row mt-4">
+        <div className="container">
+          <div className="row">
+            <PageTitle average = {average} text = "Student Grade Table" />
+          </div>
+          <div className="row">
             <GradeTable grades = {this.state.grades} deleteStudent= {this.deleteStudent}/>
             <GradeForm onSubmit={this.addStudent}/>
           </div>
