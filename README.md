@@ -34,7 +34,7 @@ Try the application live at [https://sgt.kamrynmin.com](https://sgt.kamrynmin.co
 
 - Node.js 10 or higher
 - NPM 6 or higher
-- PostgreSQL
+
 
 #### Getting Started
 
