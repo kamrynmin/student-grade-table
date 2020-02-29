@@ -62,6 +62,10 @@ class App extends React.Component {
       });
   }
 
+  updateStudent(id) {
+
+  }
+
   getAverageGrade() {
     let sum = 0;
     if (this.state.grades.length > 0) {

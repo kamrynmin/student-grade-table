@@ -2,90 +2,63 @@
 
 The Student Grade Table: Written in React
 
-## Introduction
+## Technologies Used
 
-For this project, you will be building a single-page React application that communicates with a server to manipulate data.
+- React.js
+- Webpack 4
+- Bootstrap 4
+- Node.js
+- HTML5
+- CSS3
+- AWS EC2
 
-## Getting Started
+## Live Demo
 
-1. Fork this repository to your GitHub account and clone it into the `lfz` directory on your local machine.
-1. Install all dependencies in `package.json` with NPM.
-    ```bash
-    npm install
-    ```
+Try the application live at [https://sgt.kamrynmin.com](https://sgt.kamrynmin.com)
 
-## NPM Scripts
-
-- `dev` - Start Webpack Dev Server on port `3000` and JSON Server on port `3001`. (Go to `http://localhost:3000`)
-- `build` - Run Webpack to build the React client into `server/public`. (Usually only run during deployment)
 
 ## Features
 
-- [User can view all grades.](features/user-can-view-all-grades.md)
-- [User can view the average grade.](features/user-can-view-the-average-grade.md)
-- [User can add a grade.](features/user-can-add-a-grade.md)
-- [User can delete a grade.](features/user-can-delete-a-grade.md)
+- User can view all grades.
+- User can view the average grade.
+- User can add a grade.
+- User can delete a grade.
 
 ## Preview
 
 ![SGT React](sgt-react.gif)
 
-## Server API
+## Development
 
-#### `GET /api/grades`
+#### System Requirements
 
-Responds with all recorded `grades`.
+- Node.js 10 or higher
+- NPM 6 or higher
+- PostgreSQL
 
-##### Example Response Body
+#### Getting Started
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Scott Tolinski",
-    "grade": 100,
-    "course": "Web Development"
-  },
-  {
-    "id": 2,
-    "name": "Scott Bowler",
-    "grade": 100,
-    "course": "Web Development"
-  }
-]
-```
+1. Clone the repository.
 
-#### `POST /api/grades`
+    ```shell
+    git clone https://github.com/kamrynmin/student-grade-table.git
+    cd student-grade-table
+    ```
 
-Accepts a single `grade` object in the request body and inserts it into all `grades`. Responds with the inserted `grade`, including an auto-generated `id`.
+1. Install all dependencies with NPM.
 
-##### Example Request Body
+    ```shell
+    npm install
+    ```
 
-```json
-{
-  "name": "Tim Davis",
-  "grade": 40,
-  "course": "Web Development"
-}
-```
+1. Run Webpack to build the React client.
 
-##### Example Response Body
+    ```shell
+    npm run build
+    ```
 
-```json
-{
-  "id": 3,
-  "name": "Tim Davis",
-  "grade": 40,
-  "course": "Web Development"
-}
-```
+1. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 
-#### `DELETE /api/grades/:id`
-
-Removes a `grade` from all recorded `grades`, given an `id` in the request URL. _e.g._ `/api/grades/3`
-
-##### Example Response Body
-
-```json
-{}
-```
+    ```shell
+    npm run dev
+    ```
