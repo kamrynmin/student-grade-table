@@ -2,6 +2,8 @@
 
 The Student Grade Table: Written in React
 
+Allows students to view, add, and delete student grades.
+
 ## Technologies Used
 
 - React.js
