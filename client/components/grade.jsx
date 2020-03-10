@@ -26,8 +26,6 @@ class Grade extends React.Component {
         <td>
           <button className="btn btn-danger mr-2"
             onClick={this.handleDelete}>Delete</button>
-          <button className="btn btn-warning"
-            onClick={this.handleUpdate}>Update</button>
         </td>
       </tr>
     );
