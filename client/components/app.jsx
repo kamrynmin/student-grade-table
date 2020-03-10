@@ -7,11 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: [],
-      editStudent: {
-        update: false,
-        student: {}
-      }
+      grades: []
     };
     this.addStudent = this.addStudent.bind(this);
     this.deleteStudent = this.deleteStudent.bind(this);
@@ -65,36 +61,6 @@ class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  updateStudent(student) {
-    console.log(student);
-    const { editStudent } = this.state;
-    if (!editStudent.update || (editStudent.update && editStudent.student.id !== student.id)) {
-      this.setState({ editStudent: { update: true, student } });
-    } else {
-      const { name, grade, course } = student;
-      fetch(`api/grades/${student.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, grade, course })
-      })
-        .then(response => response.json())
-        .then(data => {
-          const grades = this.state.grades.map(grade => grade.id === student.id ? data : grade);
-          this.setState({ grades });
-        })
-        .catch(err => console.error(err));
-    }
-  }
-
-  discardChanges() {
-    this.setState({
-      editStudent: {
-        update: false,
-        student: {}
-      }
-    });
-  }
-
   getAverageGrade() {
     let sum = 0;
     if (this.state.grades.length > 0) {
@@ -118,8 +84,7 @@ class App extends React.Component {
           <div className="col-lg-8 col-sm-12">
             <GradeTable
               grades={this.state.grades}
-              deleteStudent={this.deleteStudent}
-              updateStudent={this.updateStudent} />
+              deleteStudent={this.deleteStudent} />
           </div>
           <div className="col-lg-4 col-sm-12">
             <GradeForm

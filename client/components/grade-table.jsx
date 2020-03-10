@@ -12,8 +12,7 @@ class GradeTable extends React.Component {
               <Grade
                 {...grade}
                 key={grade.id}
-                deleteStudent={this.props.deleteStudent}
-                updateStudent={this.props.updateStudent} />
+                deleteStudent={this.props.deleteStudent}/>
             )
           }
         </tbody>
