@@ -7,7 +7,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: []
+      grades: [],
+      editStudent: {
+        update: false,
+        student: {}
+      }
     };
     this.addStudent = this.addStudent.bind(this);
     this.deleteStudent = this.deleteStudent.bind(this);
@@ -49,21 +53,46 @@ class App extends React.Component {
       });
   }
 
-  deleteStudent(id) {
-    fetch(`/api/grades/${id}`, {
-      method: 'DELETE'
+  deleteStudent(studentId) {
+    fetch(`/api/grades/${studentId}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' }
     })
-      .then(response => response.json)
       .then(() => {
-        const findIndex = this.state.grades.findIndex(element => element.id === id);
-        const deleteData = [...this.state.grades];
-        deleteData.splice(findIndex, 1);
-        this.setState(state => ({ grades: deleteData }));
-      });
+        const grades = this.state.grades.filter(grade => grade.id !== studentId);
+        this.setState({ grades });
+      })
+      .catch(err => console.error(err));
   }
 
-  updateStudent(id) {
+  updateStudent(student) {
+    console.log(student);
+    const { editStudent } = this.state;
+    if (!editStudent.update || (editStudent.update && editStudent.student.id !== student.id)) {
+      this.setState({ editStudent: { update: true, student } });
+    } else {
+      const { name, grade, course } = student;
+      fetch(`api/grades/${student.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, grade, course })
+      })
+        .then(response => response.json())
+        .then(data => {
+          const grades = this.state.grades.map(grade => grade.id === student.id ? data : grade);
+          this.setState({ grades });
+        })
+        .catch(err => console.error(err));
+    }
+  }
 
+  discardChanges() {
+    this.setState({
+      editStudent: {
+        update: false,
+        student: {}
+      }
+    });
   }
 
   getAverageGrade() {
@@ -79,24 +108,25 @@ class App extends React.Component {
     }
   }
 
-  deleteStudent() {
-
-  }
-
   render() {
     const average = this.getAverageGrade();
     return (
-      <React.Fragment>
-        <div className="container">
-          <div className="row">
-            <PageTitle average = {average} text = "Student Grade Table" />
+      <div className="container-fluid p-3">
+        <PageTitle average={average} />
+        <div
+          className="row">
+          <div className="col-lg-8 col-sm-12">
+            <GradeTable
+              grades={this.state.grades}
+              deleteStudent={this.deleteStudent}
+              updateStudent={this.updateStudent} />
           </div>
-          <div className="row">
-            <GradeTable grades = {this.state.grades} deleteStudent= {this.deleteStudent}/>
-            <GradeForm onSubmit={this.addStudent}/>
+          <div className="col-lg-4 col-sm-12">
+            <GradeForm
+              addStudent={this.addStudent} />
           </div>
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

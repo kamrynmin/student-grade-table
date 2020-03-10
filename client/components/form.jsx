@@ -35,7 +35,7 @@ class GradeForm extends React.Component {
       course: this.state.course,
       grade: this.state.grade
     };
-    this.props.onSubmit(newStudent);
+    this.props.addStudent(newStudent);
     this.setState(state => ({ name: '', course: '', grade: '' }));
   }
 
@@ -49,39 +49,71 @@ class GradeForm extends React.Component {
 
   render() {
     return (
-      <h6 className="container col-4 text-center"> Add Grade
-        <div className="row">
-          <div className="col-12-auto">
-            <form onSubmit={this.handleSubmit}>
-              <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Name</label>
-              <div className="input-group mb-2 mr-sm-2">
-                <div className="input-group-prepend">
-                  <div className="input-group-text fas fa-user"></div>
-                </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Name" value= {this.state.name} onChange={this.handleNameChange}></input>
-              </div>
-              <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Course</label>
-              <div className="input-group mb-2 mr-sm-2">
-                <div className="input-group-prepend">
-                  <div className="input-group-text far fa-list-alt"></div>
-                </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Course" value= {this.state.course} onChange={this.handleCourseChange}></input>
-              </div>
-              <label className="sr-only" htmlFor="inlineFormInputGroupUsername2">Grade</label>
-              <div className="input-group mb-2 mr-sm-2">
-                <div className="input-group-prepend">
-                  <div className="input-group-text fas fa-user-graduate"></div>
-                </div>
-                <input type="text" className="form-control" id="inlineFormInputGroupUsername2" placeholder="Student Grade" value= {this.state.grade} onChange={this.handleGradeChange}></input>
-              </div>
-              <button onSubmit={this.handleSubmit} type="submit" className="btn btn-success">Add</button>
-              <button onClick={this.clearForm} type="button" className="btn btn-secondary">Cancel</button>
-
-            </form>
+      <form
+        className="input-group"
+        onSubmit={this.handleSubmit}>
+        <div className="container-fluid">
+          <div className="row">
+            <h3 className="h3 col-12 text-left d-none d-lg-block mb-4">Add Grade</h3>
           </div>
         </div>
-      </h6>
-
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <span className="fas fa-user-alt"></span>
+            </span>
+          </div>
+          <input
+            required
+            type="text"
+            placeholder="Name"
+            value={this.state.name}
+            className="form-control"
+            onChange={this.handleNameChange} />
+        </div>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <span className="fas fa-school"></span>
+            </span>
+          </div>
+          <input
+            required
+            type="text"
+            placeholder="Course"
+            className="form-control"
+            value={this.state.course}
+            onChange={this.handleCourseChange} />
+        </div>
+        <div className="input-group mb-3">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
+              <span className="fas fa-graduation-cap"></span>
+            </span>
+          </div>
+          <input
+            required
+            type="number"
+            placeholder="Grade"
+            value={this.state.grade}
+            className="form-control"
+            onChange={this.handleGradeChange} />
+        </div>
+        <div className="input-group">
+          <button
+            type="submit"
+            onSubmit={this.handleSubmit}
+            className='btn btn-success'>
+            Add
+          </button>
+          <button
+            type="button"
+            onClick={this.clearForm}
+            className="btn btn-outline-secondary">
+            Cancel
+          </button>
+        </div>
+      </form>
     );
   }
 }
